@@ -105,7 +105,7 @@ LevelScene::LevelScene(GameManager* _gameManager, GameVersion _gameVersion, cons
     updateLevelTimer();
 
     //---------------------------------------------
-    m_start = std::chrono::steady_clock::now();
+    m_inicio = std::chrono::steady_clock::now();
 }
 
 void LevelScene::spawnTextObjects()
@@ -596,9 +596,9 @@ void LevelScene::update(const unsigned int delta)
     // update collision of player
     updatePlayerCollision();
     // update collision of enemies
-    
+    //Devuelve el número de elementos en el rango[primero, último)
     //-----------------------------------------------------------
-    std::cout << std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::steady_clock::now() - m_start).count() << endl;
+    std::cout << std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::steady_clock::now() - m_inicio).count() << endl;
 
 
     updateEnemiesCollision();
@@ -890,12 +890,12 @@ void LevelScene::updateEnemiesCollision()
             //srand(time(nullptr));
             // check for block collision
 
-            if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - m_start).count() >= 10000) {
+            if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - m_inicio).count() >= 10000) {
                 
-                m_start = std::chrono::steady_clock::now();
+                m_inicio = std::chrono::steady_clock::now();
             }
 
-                if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - m_start).count() >= 5000) {
+                if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - m_inicio).count() >= 5000) {
 
                     if (isCollisionDetected(enemy->getRect(), collisionObject.second->getRect()))
                     {
@@ -1246,8 +1246,9 @@ bool LevelScene::crearObjetosJuego(string _path)
                     spawnBrick(fieldPositionX + x * scaledTileSize, fieldPositionY + y * scaledTileSize);
                     break;
                 case '2':
-                    // spawnStone(fieldPositionX + x * scaledTileSize, fieldPositionY + y * scaledTileSize);
-                    spawnWallPacman(fieldPositionX + x * scaledTileSize, fieldPositionY + y * scaledTileSize, tile);
+                    spawnStone(fieldPositionX + x * scaledTileSize, fieldPositionY + y * scaledTileSize);
+                    //spawnBrick(fieldPositionX + x * scaledTileSize, fieldPositionY + y * scaledTileSize);
+                    //spawnWallPacman(fieldPositionX + x * scaledTileSize, fieldPositionY + y * scaledTileSize, tile);
                     break;
                 }
                 x++;

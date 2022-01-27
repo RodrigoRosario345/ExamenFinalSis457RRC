@@ -18,7 +18,9 @@ shared_ptr<Enemy> FactoryEnemy::TipoFantasma4 = nullptr;
 //shared_ptr<Enemy> FactoryEnemy::tipoCartoon3 = nullptr;
 //shared_ptr<Enemy> FactoryEnemy::tipoCartoon4 = nullptr;
 
-shared_ptr<Enemy> FactoryEnemy::getTipoFantasma1() /// me devuelve un onbjeto de tipo enemigo y me lo clona
+/// aca clona y devuelve con este metodo
+
+shared_ptr<Enemy> FactoryEnemy::getTipoFantasma1() 
 {
 	return TipoFantasma1->clone();
 }

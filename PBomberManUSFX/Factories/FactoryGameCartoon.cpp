@@ -19,7 +19,7 @@ std::shared_ptr<GameObject> FactoryGameCartoon::CreatePlayer(const int _position
 std::shared_ptr<GameObject> FactoryGameCartoon::CreateEnemy(AIType _type, const int _positionX, const int _positionY)
 {
     //shared_ptr<GameObject> enemy(nullptr);
-    auto enemy = std::make_shared<CartoonEnemy>(gameManager->getAssetManager()->getTexture(GameTexture::Enemy2), gameManager->getRenderer());
+    auto enemy = std::make_shared<CartoonEnemy>(gameManager->getAssetManager()->getTexture(GameTexture::Enemy3), gameManager->getRenderer());
     enemy->setPosition(_positionX, _positionY);
     enemy->setSize(scaledTileSize, scaledTileSize);
     enemy->setAIType(_type);

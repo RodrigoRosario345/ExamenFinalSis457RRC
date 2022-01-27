@@ -32,11 +32,9 @@
 class FactoryEnemy
 {
 
-private:
-	//static GameManager* getInstance();
-    /*static GameManager* gameManager;
-	int scaledTileSize;*/
 	//GameManager* gameManager = nullptr;
+	// enemy trabja con puro static porqu solo necista una copia
+	//porque con esta unica opia no va trabajr sino servira como una plantilla para crear otra copia de esta 
 private:
 	static shared_ptr<Enemy> TipoFantasma1;
 	static shared_ptr<Enemy> TipoFantasma2;
@@ -54,7 +52,7 @@ public:
 	 static void  initialize()
 	{
 		
-		auto TipoFantasma1 = new EnemigoFantasma((new AssetManager())->getTexture(GameTexture::Enemy2), nullptr);
+		auto TipoFantasma1 = new EnemigoFantasma((new AssetManager())->getTexture(GameTexture::Enemy2), nullptr);//crea alos objetos
 		auto TipoFantasma2 = new EnemigoFantasma((new AssetManager())->getTexture(GameTexture::Enemy2), nullptr);
 		auto TipoFantasma3 = new EnemigoFantasma((new AssetManager())->getTexture(GameTexture::Enemy2), nullptr);
 		auto TipoFantasma4 = new EnemigoFantasma((new AssetManager())->getTexture(GameTexture::Enemy2), nullptr);
@@ -65,8 +63,10 @@ public:
 		auto tipoCartoon4 = new CartoonEnemy((new AssetManager())->getTexture(GameTexture::Enemy3), nullptr);*/
 	}
 
+	 //aca implementamos este getipofantasma nos devolver un obejto 
+	 //pero no el objeto que ha crado sino una copia entonces estos haras de clonar y devolver
 
-	static shared_ptr<Enemy> getTipoFantasma1();//aca solo estamos inicializando un puntero a un metodo gettipo del tipo Enemy
+	 static shared_ptr<Enemy> getTipoFantasma1();
 	static shared_ptr<Enemy> getTipoFantasma2();
 	static shared_ptr<Enemy> getTipoFantasma3();
 	static shared_ptr<Enemy> getTipoFantasma4();

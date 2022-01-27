@@ -8,11 +8,11 @@ template<typename Clock_t = std::chrono::steady_clock>
 class Clock
 {
 public:
-    using TimePoint = decltype(Clock_t::now());
+    using TimePoint = decltype(Clock_t::now()); //decltype se puede usar para obtener el tipo de una variable en este caso un un tiempo ahora
 private:
-    TimePoint m_start;
+    TimePoint m_inicio;
 public:
-    Clock() : m_start(Clock_t::now()) {
+    Clock() : m_inicio(Clock_t::now()) {
 
     }
     ~Clock() {
@@ -20,15 +20,15 @@ public:
     }
 
     void reset() {
-        m_start = Clock_t::now();
+        m_inicio = Clock_t::now();
     }
 
     float getSeconds() const {
-        return std::chrono::duration_cast<std::chrono::duration<float>>(Clock_t::now() - m_start).count();
+        return std::chrono::duration_cast<std::chrono::duration<float>>(Clock_t::now() - m_inicio).count();
     }
 
     long long getMilliseconds() const {
-        return std::chrono::duration_cast<std::chrono::milliseconds>(Clock_t::now() - m_start).count();
+        return std::chrono::duration_cast<std::chrono::milliseconds>(Clock_t::now() - m_inicio).count();
     }
 };
 

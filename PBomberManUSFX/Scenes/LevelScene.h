@@ -13,7 +13,10 @@
 
 
 #include "../Const.h"
+
 #include "../Entities/Enemy.h"
+#include "../Entities/FactoryEnemy.h"
+//----------------------------------------
 #include "../Entities/EnemigoFantasma.h"
 #include "../Entities/Music.h"
 #include "../Entities/Player.h"
@@ -21,7 +24,7 @@
 #include "../Entities/Text.h"
 #include "../Scenes/Scene.h"
 #include "../Factories/Factory.h"
-#include "../Entities/FactoryEnemy.h"
+
 #include "../Factories/FactoryGameClasico.h"
 #include "../Factories/FactoryGameCartoon.h"
 
@@ -70,12 +73,12 @@ public:
 
 
     //--------------------------------------
-    using TimePoint = decltype(std::chrono::steady_clock::now());
+    using TimePoint = decltype(std::chrono::steady_clock::now()); //steady_clock para calcular intervalos de tiempo.
     //----------------------------------------------------
 private:
     //----------------------------------------------------
     std::chrono::steady_clock _reloj;
-    TimePoint m_start;
+    TimePoint m_inicio;
     //--------------------------------------------------------
 
     
